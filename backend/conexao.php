@@ -1,18 +1,15 @@
 <?php
-$servername = "";
+$servername = "mysql-service";
 $username = "root";
 $password = "Senha123";
 $database = "meubanco";
 
-// Criar conexão
-
-
 $link = new mysqli($servername, $username, $password, $database);
 
-/* check connection */
 if (mysqli_connect_errno()) {
-    printf("Connect failed: %s\n", mysqli_connect_error());
+    error_log("Connect failed: " . mysqli_connect_error());
+    http_response_code(500);
+    echo "Erro de conexão com o banco de dados.";
     exit();
 }
-
 ?>
